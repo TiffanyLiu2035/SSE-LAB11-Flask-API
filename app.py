@@ -3,6 +3,10 @@ from books import books
 
 app = Flask(__name__)
 
+@app.route('/')
+def home():
+    return jsonify({"message": "Welcome to the Books API!", "available_endpoints": ["/books"]})
+
 @app.route('/books', methods=['GET'])
 def get_books():
     genre = request.args.get('genre') 
